@@ -7,11 +7,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -52,7 +50,6 @@ public class ReservationControllerTest {
 
         String mockUrl = "/reservations?date=2023-03-26”";
         given(reservationService.getRoomReservationsForDate(date)).willReturn(mockReservationList);
-//        this.mockMvc.perform(get("/reservations?date=2023-03-26”));
         this.mockMvc.perform(get(mockUrl))
             .andExpect(status().isOk())
             .andExpect(content().string(containsString("Test, JUnit")));
